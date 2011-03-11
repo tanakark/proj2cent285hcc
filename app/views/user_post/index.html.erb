@@ -1,0 +1,18 @@
+<!-- app/views/user_post/index.html.erb -->
+<h2>Suggestion Board</h2>
+<table border="1">
+	<td>Poster's name</td><td>Suggestion</td><td>created at</td><td>updated at</td>
+	<% @userposts.each do |up| %>
+		<tr>
+			<td><%= up.name %></td>
+			<td><%= up.suggestion %></td>
+			<td><%= up.created_at %></td>
+			<td><%= up.updated_at %></td>
+		</tr>
+	<% end %>
+</table>
+<% if cookies.signed[:authenticated] %>
+	<%= link_to "Add Suggestion", :controller => "user_post", :action => "new" %>
+<% else %>
+	<%= link_to "Login to post!", :controller => "pages", :action => "login" %>
+<% end %>

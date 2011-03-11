@@ -1,0 +1,9 @@
+<!-- app/views/users/choosePost.html.erb -->
+<h2>Choose Post to edit</h2>
+<% if cookies.signed[:user_id] > 0 %>
+<%= form_for :id, :url => {:action => "edit"} do |f|%>
+	<%= f.collection_select @post, @posts, :id, :suggestion,
+	  options = {:prompt => "Choose a Post"}, :class => "post" %><br />
+	<%= f.submit "Submit" %>
+<% end %>
+<% end %>

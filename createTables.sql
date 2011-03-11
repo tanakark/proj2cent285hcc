@@ -1,4 +1,4 @@
--- createTables.sql
+-- createTables.sql First to Run
 
 -- create squences
 drop sequence if exists user_id_seq cascade;
@@ -21,20 +21,15 @@ create table users(
 drop table if exists posts cascade;
 create table posts(
 	id integer not null primary key default nextval('post_id_seq'),
-	created_on date,
-	modified_on date,
-	posters_name text
-);
-drop table if exists user_post cascade;
-create table user_post(
-	user_id integer references users(id),
-	post_id integer references posts(id)
+	userid integer references users(id),
+	suggestion text,
+	created_at timestamp,
+	updated_at timestamp
 );
 
 -- create view
 drop view if exists user_post_view cascade;
 create view user_post_view as
-	select users.id as userid,posts.id as postid,posts.created_on, posts.modified_on
-	from users join user_post on users.id=user_post.user_id join posts on user_post.post_id=posts.id;
-	
-	
+	select users.id as userid,posts.id as postid,users.name,users.department,users.division,
+	posts.suggestion,posts.created_at,posts.updated_at
+	from users join posts on users.id=posts.userid;

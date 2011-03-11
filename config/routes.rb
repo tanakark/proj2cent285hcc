@@ -1,4 +1,22 @@
 Proj2::Application.routes.draw do
+  match "pages/login", :via =>[:get, :post]
+  match "pages/continue" => "pages#continue"
+  root :to => "pages#login"
+  get "pages/logout"
+  get "users/new"
+  match "users/create" => "users#create"
+  get "users/edit"
+  match "users/edit" => "users#edit"
+  match "users/update" => "users#update"
+  match "users/index" => "users#index", :via => [:get,:post]
+  match "users/chooseUser" => "users#chooseUser"
+  get "user_post/index"
+  match 'user_post/findByPoster/:posters_name' => "user_posts#findByPoster"
+  match "user_post/new" => "user_post#new"
+  match "user_post/create" => "user_post#create"
+  match "user_post/edit" => "user_post#edit"
+  match "user_post/update" => "user_post#update"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,7 @@
+<% @user = @userposts.collect {|u| u.last_name}.join ', ' %>
+<% @post = @userposts.first.post %>
+<table border="1">
+	<tr>
+		<td><% @user %></td><td><% @post %></td>
+	</tr>
+</table>
