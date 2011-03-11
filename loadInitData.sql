@@ -27,3 +27,5 @@ insert into posts (userid,suggestion,created_at,updated_at)
   values (4,'Yeah! I am going to finish this first!',now(),now());
 insert into posts (userid,suggestion,created_at,updated_at)
   values (5,'Hahahaha',now(),now());
+insert into posts (userid,suggestion,created_at,updated_at)
+  values (6,'Wow am I close to finshing this?',now(),now());
